@@ -22,7 +22,7 @@ class Stack {
   }
 
   push(e) {
-    this.data[this.lenght++] = e;
+    this.data[this.length++] = e;
   }
 
   pop() {
@@ -42,3 +42,9 @@ class Stack {
   }
 }
 ```
+
+## 测试
+
+```js
+  node ./stack.js
+``` 

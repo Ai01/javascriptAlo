@@ -57,7 +57,7 @@ class Stack {
   }
 
   push(e) {
-    this.data[this.lenght++] = e;
+    this.data[this.length++] = e;
   }
 
   pop() {
