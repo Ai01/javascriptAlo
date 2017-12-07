@@ -52,7 +52,10 @@
 // 我的实现
 class Stack {
   constructor(array) {
-    this.data = [].concat(array);
+    this.data = [];
+    if (array) {
+      this.data = [].concat(array);
+    }
     this.length = this.data.length;
   }
 
@@ -66,7 +69,7 @@ class Stack {
   }
 
   peek(index) {
-    if(index>this.length){
+    if (index > this.length) {
       throw new Error(`超过栈的长度${this.length}`);
     }
     return this.data[index];
@@ -76,7 +79,6 @@ class Stack {
     this.data = [];
   }
 }
-
 
 const test = new Stack([1, 2, 3]);
 console.log(test);

@@ -17,7 +17,10 @@
 ```js
 class Stack {
   constructor(array) {
-    this.data = [].concat(array);
+    this.data = [];
+    if (array) {
+      this.data = [].concat(array);
+    }
     this.length = this.data.length;
   }
 
@@ -31,7 +34,7 @@ class Stack {
   }
 
   peek(index) {
-    if(index>this.length){
+    if (index > this.length) {
       throw new Error(`超过栈的长度${this.length}`);
     }
     return this.data[index];
@@ -43,8 +46,51 @@ class Stack {
 }
 ```
 
-## 测试
+## 基本测试
 
 ```js
   node ./stack.js
-``` 
+```
+
+## 栈的使用
+
+### 回文问题
+
+> rar 就是一个回文。一段文字从左到右和从右到左是同一个单词，那就是回文。
+
+```js
+const isPalindrome = word => {
+  const s = new Stack();
+  for (let i = 0; i < word.length; i++) {
+    s.push(word[i]);
+  }
+  let rWord = "";
+  while (s.length > 0) {
+    rWord = `${rWord}${s.pop()}`;
+  }
+  if (rWord === word) {
+    return true;
+  }
+  return false;
+};
+```
+
+### 进制转换
+
+> 将数字转换为目标进制的数字
+
+```js
+// b只能是2~9
+const conversions = (num, b) => {
+  var s = new Stack();
+  while (num > 0) {
+    s.push(num % b);
+    num = Math.floor(num / b);
+  }
+  let _res = "";
+  while (s.length > 0) {
+    _res += s.pop();
+  }
+  return _res;
+};
+```
