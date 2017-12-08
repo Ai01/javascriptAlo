@@ -8,10 +8,10 @@
 
 1. 栈中元素的获取，如果不在栈顶是不可以获取的。(pop)
 2. 将元素压入栈顶。(push)
-3. 预览栈中的元素。只读(peek)
-4. 预览栈顶的元素，为了减少使用peek的麻烦，读栈顶的操作比较频繁。只读(top)
-4. 清除栈内的所有元素。(clean)
-5. 获取栈中元素的长度也就是数量 (length)
+3. 预览栈中的元素。只读 (peek)
+4. 预览栈顶的元素，为了减少使用 peek 的麻烦，读栈顶的操作比较频繁。只读 (top)
+5. 清除栈内的所有元素。(clean)
+6. 获取栈中元素的长度也就是数量 (length)
 
 ## 代码实现
 
@@ -30,8 +30,12 @@ class Stack {
   }
 
   pop() {
-    const _res = this.data[--this.length];
-    return _res;
+    if (this.length >= 1) {
+      const _res = this.data[--this.length];
+      this.data.length = this.length;
+      return _res;
+    }
+    throw new Error("stack已经空了");
   }
 
   peek(index) {
@@ -41,8 +45,9 @@ class Stack {
     return this.data[index];
   }
 
-  top(){
-    return this.data[this.length]
+  top() {
+    // -1不可以忘记
+    return this.data[this.length - 1];
   }
 
   clear() {
@@ -61,9 +66,10 @@ class Stack {
 
 ### 表达式的应用（经典问题）
 
-> 问题：给定一个字符串，只包含 +,  -,  *,  / ,  数字,  小数点,  ( ,  )。要求：(1) 判断该算术表达式是否合法； (2) 如果合法，计算该表达式的值。
+> 问题：给定一个字符串，只包含 +, -, \*, / , 数字 , 小数点 , ( , )。要求：(1) 判
+> 断该算术表达式是否合法； (2) 如果合法，计算该表达式的值。
 
-> TODO
+> TODO:思考清楚，写下来.
 
 ### 回文问题
 
@@ -105,4 +111,3 @@ const conversions = (num, b) => {
   return _res;
 };
 ```
-

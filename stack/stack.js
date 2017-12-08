@@ -64,8 +64,12 @@ class Stack {
   }
 
   pop() {
-    const _res = this.data[--this.length];
-    return _res;
+    if (this.length >= 1) {
+      const _res = this.data[--this.length];
+      this.data.length = this.length;
+      return _res;
+    }
+    throw new Error("stack已经空了");
   }
 
   peek(index) {
@@ -75,20 +79,31 @@ class Stack {
     return this.data[index];
   }
 
+  top() {
+    // -1不可以忘记
+    return this.data[this.length - 1];
+  }
+
   clear() {
     this.data = [];
   }
 }
 
 const test = new Stack([1, 2, 3]);
+console.log('constructor')
 console.log(test);
 console.log(test.length);
+console.log('push')
 test.push(5);
 console.log(test);
 console.log(test.length);
+console.log('pop')
 test.pop();
 console.log(test);
 console.log(test.length);
-console.log(test.peek());
+console.log(test.peek(2));
+console.log('top')
+console.log(test.top());
+console.log('clear')
 test.clear();
 console.log(test);

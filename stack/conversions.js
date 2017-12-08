@@ -13,8 +13,12 @@ class Stack {
   }
 
   pop() {
-    const _res = this.data[--this.length];
-    return _res;
+    if (this.length >= 1) {
+      const _res = this.data[--this.length];
+      this.data.length = this.length;
+      return _res;
+    }
+    throw new Error("stack已经空了");
   }
 
   peek(index) {
@@ -22,6 +26,11 @@ class Stack {
       throw new Error(`超过栈的长度${this.length}`);
     }
     return this.data[index];
+  }
+
+  top() {
+    // -1不可以忘记
+    return this.data[this.length - 1];
   }
 
   clear() {
