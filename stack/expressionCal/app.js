@@ -3,7 +3,7 @@
 // 2. 将表达式从中缀式转换为右缀式
 // 3. 计算右缀式
 
-const _expression = "5+2*(6-3)-4/2";
+const _expression = "5+2*(6-3)-4/2+8";
 
 class Stack {
   constructor(array) {
@@ -11,31 +11,27 @@ class Stack {
     if (array) {
       this.data = [].concat(array);
     }
-    this.length = this.data.length;
   }
 
   push(e) {
-    this.data[this.length++] = e;
+    this.data.push(e);
   }
 
   pop() {
-    if (this.length >= 1) {
-      const _res = this.data[--this.length];
-      this.data.length = this.length;
+      const _res = this.data.pop();
       return _res;
-    }
-    throw new Error("stack已经空了");
   }
 
   peek(index) {
-    if (index > this.length) {
-      throw new Error(`超过栈的长度${this.length}`);
-    }
     return this.data[index];
   }
 
+  length(){
+    return this.data.length;
+  }
+
   top() {
-    return this.data[this.length - 1];
+    return this.data[this.data.length - 1];
   }
 
   clear() {
@@ -82,7 +78,7 @@ const getPostfix = expr => {
     // 如果是运算符
     if (isOperator(tmp)) {
       while (
-        operators.length &&
+        operators.length() &&
         isOperator(operators.top()) &&
         prior(operators.top()) >= prior(tmp)
       ) {
@@ -104,7 +100,7 @@ const getPostfix = expr => {
   }
 
   // 如果操作符栈没空
-  while (operators.length) {
+  while (operators.length()) {
     outPut.push(operators.pop());
   }
 
@@ -121,7 +117,7 @@ const popTwoNumbers = s => {
 // 从后缀表达式中获取结果
 const getResFromPosfix = s => {
   var res = new Stack();
-  for (let i = 0; i < s.length; ++i) {
+  for (let i = 0; i < s.length(); ++i) {
     const tmp = s.peek(i);
     switch (tmp) {
       case "+":

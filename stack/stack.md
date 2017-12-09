@@ -20,34 +20,30 @@ class Stack {
   constructor(array) {
     this.data = [];
     if (array) {
+      // 不再这里维护length，避免代码写的复杂
       this.data = [].concat(array);
     }
-    this.length = this.data.length;
   }
 
   push(e) {
-    this.data[this.length++] = e;
+    this.data.push(e);
   }
 
   pop() {
-    if (this.length >= 1) {
-      const _res = this.data[--this.length];
-      this.data.length = this.length;
-      return _res;
-    }
-    throw new Error("stack已经空了");
+    const _res = this.data.pop();
+    return _res;
   }
 
   peek(index) {
-    if (index > this.length) {
-      throw new Error(`超过栈的长度${this.length}`);
-    }
     return this.data[index];
   }
 
+  length(){
+    return this.data.length;
+  }
+
   top() {
-    // -1不可以忘记
-    return this.data[this.length - 1];
+    return this.data[this.data.length - 1];
   }
 
   clear() {
@@ -82,7 +78,7 @@ const isPalindrome = word => {
     s.push(word[i]);
   }
   let rWord = "";
-  while (s.length > 0) {
+  while (s.length() > 0) {
     rWord = `${rWord}${s.pop()}`;
   }
   if (rWord === word) {
@@ -105,7 +101,7 @@ const conversions = (num, b) => {
     num = Math.floor(num / b);
   }
   let _res = "";
-  while (s.length > 0) {
+  while (s.length() > 0) {
     _res += s.pop();
   }
   return _res;

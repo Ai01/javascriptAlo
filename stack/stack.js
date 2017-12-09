@@ -54,34 +54,30 @@ class Stack {
   constructor(array) {
     this.data = [];
     if (array) {
+      // 不再这里维护length，避免代码写的复杂
       this.data = [].concat(array);
     }
-    this.length = this.data.length;
   }
 
   push(e) {
-    this.data[this.length++] = e;
+    this.data.push(e);
   }
 
   pop() {
-    if (this.length >= 1) {
-      const _res = this.data[--this.length];
-      this.data.length = this.length;
+      const _res = this.data.pop();
       return _res;
-    }
-    throw new Error("stack已经空了");
   }
 
   peek(index) {
-    if (index > this.length) {
-      throw new Error(`超过栈的长度${this.length}`);
-    }
     return this.data[index];
   }
 
+  length(){
+    return this.data.length;
+  }
+
   top() {
-    // -1不可以忘记
-    return this.data[this.length - 1];
+    return this.data[this.data.length - 1];
   }
 
   clear() {
@@ -89,21 +85,22 @@ class Stack {
   }
 }
 
+console.log('constructor测试:')
 const test = new Stack([1, 2, 3]);
-console.log('constructor')
 console.log(test);
-console.log(test.length);
-console.log('push')
+console.log(test.length());
+console.log('push测试:')
 test.push(5);
 console.log(test);
-console.log(test.length);
-console.log('pop')
+console.log(test.length());
+console.log('pop测试:')
 test.pop();
 console.log(test);
-console.log(test.length);
+console.log(test.length());
 console.log(test.peek(2));
-console.log('top')
+console.log('top测试:')
 console.log(test.top());
-console.log('clear')
+console.log('clear测试:')
 test.clear();
 console.log(test);
+console.log(test.length());
