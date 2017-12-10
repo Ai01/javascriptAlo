@@ -8,7 +8,6 @@ var matrix = function (numrows, numcols, initial) {
     arr[i] = columns;
   }
   return arr;
-}
+};
 
-
-module.exports.matrix = matrix
+module.exports.matrix = matrix;
