@@ -1,0 +1,21 @@
+const Stack = require("./stack");
+
+console.log("constructor测试:");
+const test = new Stack([1, 2, 3]);
+console.log(test);
+console.log(test.length());
+console.log("push测试:");
+test.push(5);
+console.log(test);
+console.log(test.length());
+console.log("pop测试:");
+test.pop();
+console.log(test);
+console.log(test.length());
+console.log(test.peek(2));
+console.log("top测试:");
+console.log(test.top());
+console.log("clear测试:");
+test.clear();
+console.log(test);
+console.log(test.length());
