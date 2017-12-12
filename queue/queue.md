@@ -63,6 +63,10 @@ class Queue {
 
 
 
+## 可运行代码
 
+[队列](./src/queue.js)
 
+[队列的测试](./src/test.js)
 
+[两个队列模仿一个栈](./example/fakeStack/index.js)
