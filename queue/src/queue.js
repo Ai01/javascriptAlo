@@ -24,11 +24,11 @@ class Queue {
     return this.data[0];
   }
 
-  enterQueue(element) {
+  push(element) {
     this.data.push(element);
   }
 
-  outQueue() {
+  pop() {
     return this.data.shift();
   }
 

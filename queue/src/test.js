@@ -14,7 +14,7 @@ underline();
 
 console.log('enterQueue测试');
 console.log(queue);
-queue.enterQueue(5);
+queue.push(5);
 console.log(queue);
 
 underline();
@@ -34,7 +34,7 @@ underline();
 
 console.log('outQueue测试');
 console.log(queue);
-queue.outQueue();
+queue.pop();
 console.log(queue);
 
 underline();
@@ -42,7 +42,6 @@ underline();
 console.log('front测试');
 console.log(queue);
 console.log('front', queue.front());
-console.log(queue);
 
 underline();
 

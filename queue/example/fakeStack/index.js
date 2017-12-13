@@ -10,7 +10,7 @@
 
 const Queue = require('../../src/queue');
 
-class FakeSatck {
+class FakeStack {
   constructor() {
     this.queueOne = new Queue();
     this.queueTwo = new Queue();
@@ -20,15 +20,15 @@ class FakeSatck {
     const lengthFoQueueOne = this.queueOne.length();
     const lengthForQueueTwo = this.queueTwo.length();
     if (lengthFoQueueOne === 0 && lengthForQueueTwo === 0) {
-      this.queueOne.enterQueue(e);
+      this.queueOne.push(e);
       return;
     }
     if (lengthFoQueueOne === 0 && lengthForQueueTwo !== 0) {
-      this.queueTwo.enterQueue(e);
+      this.queueTwo.push(e);
       return;
     }
     if (lengthForQueueTwo === 0 && lengthFoQueueOne !== 0) {
-      this.queueOne.enterQueue(e);
+      this.queueOne.push(e);
       return;
     }
     throw new Error('两个队列都不为空');
@@ -47,14 +47,14 @@ class FakeSatck {
     }
     const _startTimeLength = outPutQueue.length();
     for (let i = 0; i < _startTimeLength - 1; i += 1) {
-      acceptQueue.enterQueue(outPutQueue.outQueue());
+      acceptQueue.push(outPutQueue.pop());
     }
-    return outPutQueue.outQueue();
+    return outPutQueue.pop();
   }
 }
 
 // test
-const fakeStack = new FakeSatck();
+const fakeStack = new FakeStack();
 
 console.log('push测试');
 console.log(fakeStack);
