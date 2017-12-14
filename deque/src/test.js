@@ -24,6 +24,11 @@ console.log(deque);
 
 underline();
 
+console.log('getFirst测试');
+console.log(deque.getFirst());
+
+underline();
+
 console.log('addLast测试');
 deque.addLast(8);
 console.log(deque);
@@ -33,6 +38,11 @@ underline();
 console.log('removeLast测试');
 deque.removeLast();
 console.log(deque);
+
+underline();
+
+console.log('getLast测试');
+console.log(deque.getLast());
 
 underline();
 
