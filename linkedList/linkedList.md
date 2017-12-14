@@ -13,10 +13,9 @@
 
 > 在实现链表的时候需要考虑到链表是由 Node 组成的。而且每个 Node 都应该有下一个 Node 的引用
 
-1. 获取头部。getHead
-2. 插入操作。insert
-3. 删除操作。remove
-4. 查找操作。find
+1. 插入操作。insert
+2. 删除操作。remove
+3. 查找操作。find
 
 ## 代码实现
 
