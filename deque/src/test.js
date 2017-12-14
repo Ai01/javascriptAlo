@@ -46,6 +46,6 @@ console.log(deque.length());
 
 underline();
 
-console.log('clean测试');
-deque.clean();
+console.log('clear测试');
+deque.clear();
 console.log(deque);

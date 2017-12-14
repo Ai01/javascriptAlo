@@ -36,7 +36,7 @@ class Deque {
     return this.data.length;
   }
 
-  clean() {
+  clear() {
     this.data = [];
   }
 
