@@ -7,3 +7,13 @@
 * [x] [双向队列](./deque/deque.md)
 * [x] [优先队列](./priorityQueue/priorityQueue.md)
 * [x] [链表](./linkedList/linkedList.md)
+* [x] [二叉查找树](./binarySearchTree/binarySearchTree.md)
+
+
+## TODO
+
+* 双向链表
+* 循环链表
+* 二叉查找树
+* 排序
+* 图

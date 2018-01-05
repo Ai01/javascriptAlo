@@ -1,0 +1,22 @@
+{
+  "name": "alo",
+  "version": "1.0.0",
+  "description": "## 目录",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ai01/javascriptAlo.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ai01/javascriptAlo/issues"
+  },
+  "homepage": "https://github.com/Ai01/javascriptAlo#readme",
+  "dependencies": {
+    "treeify": "^1.0.1"
+  }
+}
