@@ -9,7 +9,7 @@ class Graph {
   constructor(vertices) {
     // 顶点的集合
     this.vertices = [];
-    if(Array.isArray(vertices)){
+    if (Array.isArray(vertices)) {
       this.vertices = vertices;
     }
     // 边的条数
@@ -22,16 +22,20 @@ class Graph {
     }
   }
 
-
   // 添加顶点
-  addVertex(data){
+  addVertex(data) {
     const { label } = data;
     const newVertex = new Vertex(label);
     this.vertices.push(newVertex);
   }
 
   // 删除顶点
-  // TODO:bai
+  deleteVertex(data) {
+    const { label } = data;
+
+    // TODO:bai 如果删除节点那么怎么删除其它的节点和这个节点的边
+    this.vertices = this.vertices.filter(a => a.label !== label);
+  }
 
   // 添加边
   addEdge(from, to) {
@@ -43,7 +47,7 @@ class Graph {
 
   // 删除边
   deleteEdge(from, to) {
-    this.adj[from] =  this.adj[from].filter(item => {
+    this.adj[from] = this.adj[from].filter(item => {
       return item !== to;
     });
     this.adj[to] = this.adj[to].filter(item => {
@@ -52,9 +56,19 @@ class Graph {
     this.edges -= 1;
   }
 
+
+  // 广度优先搜索
+  bfs(){
+
+  }
+
+  dfs(){
+
+  }
+
 }
 
 module.exports = {
   Graph,
-  Vertex
-}
+  Vertex,
+};
