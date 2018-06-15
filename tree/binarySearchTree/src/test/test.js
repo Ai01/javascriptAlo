@@ -1,7 +1,7 @@
 // 二叉查找树测试
 
 const BinarySearchTree = require('../binarySearchTree');
-const { consoleTestName, consoleUnderLine } = require('../../../utils/consoleUtils');
+const { consoleTestName, consoleUnderLine } = require('../../../../utils/consoleUtils');
 
 const Tree = new BinarySearchTree(4, { name: 'bai' });
 

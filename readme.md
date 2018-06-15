@@ -7,7 +7,7 @@
     * [x] [双向队列](./queue_alo/deque/deque.md)
     * [x] [优先队列](./queue_alo/priorityQueue/priorityQueue.md)
 * [x] [链表](./linkedList/linkedList.md)
-* [x] [二叉查找树](./binarySearchTree/binarySearchTree.md)
+* [x] [二叉查找树](tree/binarySearchTree/binarySearchTree.md)
 * [x] [排序](./sequence_alo)
 
 
