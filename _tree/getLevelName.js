@@ -20,7 +20,7 @@ const a = [{
 }];
 
 const _endNameArray = [];
-getLevelName = (firstName, arr) => {
+const getLevelName = (firstName, arr) => {
     arr.forEach((item) => {
         if (item.children) {
             getLevelName(firstName + ' ' + item.name, item.children);
