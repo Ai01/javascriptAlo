@@ -1,6 +1,6 @@
 // 快速排序
 // 将数组分为左右两部分，小于中间值的左边，大于中间值的右边。然后递归concat
-const array = [1, 4, 3, 6, 2, 1, 3, 8, 0, 19, 9];
+const array = [1, 4, 3, 6];
 
 const quickSort = (arr) => {
   if (arr.length <= 1) {
