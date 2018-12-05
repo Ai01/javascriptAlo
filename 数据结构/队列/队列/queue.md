@@ -2,7 +2,7 @@
 
 ## 什么是队列
 
-> 队列最重要的特性是先入先出,(FIFO, first-in-first-out)
+队列最重要的特性是先入先出,(FIFO, first-in-first-out)
 
 ## 队列需要有哪些操作
 
