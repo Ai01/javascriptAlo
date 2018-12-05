@@ -1,101 +1,78 @@
-function Node(value) {
-  this.data = value;
-  this.previous = null;
-  this.next = null;
+// 双向链表
+
+class Node {
+  constructor(value, next, prev) {
+    this.value = value;
+    this.next = next || null;
+    this.prev = prev || null;
+  }
 }
 
-function DoublyList() {
-  this._length = 0;
-  this.head = null;
-  this.tail = null;
-}
-
-DoublyList.prototype.add = function(value) {
-  var node = new Node(value);
-
-  if (this._length) {
-    this.tail.next = node;
-    node.previous = this.tail;
-    this.tail = node;
-  } else {
-    this.head = node;
-    this.tail = node;
+class DoubleList {
+  constructor() {
+    this.head = new Node('head');
+    this.tail = this.head;
   }
 
-  this._length++;
-
-  return node;
-};
-
-DoublyList.prototype.searchNodeAt = function(position) {
-  var currentNode = this.head,
-    length = this._length,
-    count = 1,
-    message = {failure: 'Failure: non-existent node in this list.'};
-
-  // 1st use-case: an invalid position
-  if (length === 0 || position < 1 || position > length) {
-    throw new Error(message.failure);
-  }
-
-  // 2nd use-case: a valid position
-  while (count < position) {
-    currentNode = currentNode.next;
-    count++;
-  }
-
-  return currentNode;
-};
-
-DoublyList.prototype.remove = function(position) {
-  var currentNode = this.head,
-    length = this._length,
-    count = 1,
-    message = {failure: 'Failure: non-existent node in this list.'},
-    beforeNodeToDelete = null,
-    afterNodeToDelete = null,
-    nodeToDelete = null,
-    deletedNode = null;
-
-  // 1st use-case: an invalid position
-  if (length === 0 || position < 1 || position > length) {
-    throw new Error(message.failure);
-  }
-
-  // 2nd use-case: the first node is removed
-  if (position === 1) {
-    this.head = currentNode.next;
-
-    // 2nd use-case: there is a second node
-    if (!this.head) {
-      this.head.previous = null;
-      // 2nd use-case: there is no second node
-    } else {
-      this.tail = null;
-    }
-
-    // 3rd use-case: the last node is removed
-  } else if (position === this._length) {
-    this.tail = this.tail.previous;
-    this.tail.next = null;
-    // 4th use-case: a middle node is removed
-  } else {
-    while (count < position) {
+  find(value) {
+    let currentNode = this.head;
+    while (currentNode && currentNode.next && currentNode.value !== value) {
       currentNode = currentNode.next;
-      count++;
     }
-
-    beforeNodeToDelete = currentNode.previous;
-    nodeToDelete = currentNode;
-    afterNodeToDelete = currentNode.next;
-
-    beforeNodeToDelete.next = afterNodeToDelete;
-    afterNodeToDelete.previous = beforeNodeToDelete;
-    deletedNode = nodeToDelete;
-    nodeToDelete = null;
+    return currentNode;
   }
 
-  this._length--;
+  insert(value, prevValue) {
+    const newNode = new Node(value);
+    const prevNode = this.find(prevValue);
 
-  return message.success;
-};
+    if (prevNode && !prevNode.next) {
+      // 如果前一个节点是尾节点
+      this.tail = newNode;
+    }
+
+    newNode.next = prevNode.next;
+    prevNode.next = newNode;
+    newNode.prev = prevNode;
+  }
+
+  getHead() {
+    return this.head;
+  }
+
+  getTail() {
+    return this.tail;
+  }
+
+  remove(value) {
+    const node = this.find(value);
+    const prevNode = node.prev;
+
+    if (!node) {
+      return null;
+    }
+
+    if (node.next !== null) {
+      node.next.prev = prevNode;
+      prevNode.next = node.next;
+    } else {
+      // 如果删除的是最后的节点需要改变tail
+      prevNode.next = null;
+      this.tail = prevNode;
+    }
+  }
+
+  show() {
+    let currentNode = this.head;
+
+    const res = [];
+    while (currentNode && currentNode.value) {
+      res.push(currentNode.value);
+      currentNode = currentNode.next;
+    }
+
+    return res.join(',');
+  }
+}
+
+module.exports = DoubleList;
