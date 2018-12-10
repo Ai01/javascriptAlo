@@ -10,17 +10,16 @@ class LinkedHashMap {
   }
 
   add(key, value){
-    if(this.capacity > 0) {
-      this.capacity -= 1;
-    } else if(!this.hashTable[key]) {
-      this.deleteTail();
-    }
-
-    if(this.hashTable[key]) {
-      this.doubleLinkedList.changeHead(key);
-    } else {
+    if(!this.hashTable[key]) {
+      if(this.capacity > 0) {
+        this.capacity -= 1;
+      } else {
+        this.deleteTail();
+      }
       // 将刚插入的节点放到头部
       this.doubleLinkedList.insertHead(key);
+    } else {
+      this.doubleLinkedList.changeHead(key);
     }
 
     // 插入hashTable
