@@ -15,6 +15,21 @@ class Hash {
     return total % this.size;
   }
 
+  remove(key) {
+    var index = this.hash(key);
+
+    if (!this.table[index]) {
+      return;
+    } else if(Array.isArray(this.table[index])) {
+      this.table[index] = this.table[index].map(i => {
+        if(i && i.key === key) {
+          return null;
+        }
+        return i;
+      });
+    }
+  }
+
   insert(key, val) {
     // 对于数组大小无法自动扩充的语言来说。需要在这个地方来实现对数组的扩大
 
