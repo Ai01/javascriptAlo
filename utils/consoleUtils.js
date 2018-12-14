@@ -8,12 +8,14 @@ const consoleUnderLine = () => {
   console.log('---------------------------------------------------');
 };
 
-const consoleTree = tree =>
-  console.log(
-    treeify.asTree(tree, a => {
-      return a.data;
-    }),
-  );
+const consoleTree = (tree, name) => {
+  if(name)  {
+    console.log('name:', name);
+  }
+  console.log(treeify.asTree(tree, a => {
+   return a.data;
+  }));
+};
 
 module.exports = {
   consoleTestName,
