@@ -1,33 +1,43 @@
 class Stack {
-  constructor(array) {
+  constructor(a) {
     this.data = [];
-    if (array) {
+    if (Array.isArray(a)) {
       // 不再这里维护length，避免代码写的复杂
-      this.data = [].concat(array);
+      this.data = [].concat(a);
     }
   }
 
+  // 入栈
   push(e) {
     this.data.push(e);
   }
 
+  // 出栈
   pop() {
-    const _res = this.data.pop();
-    return _res;
+    return this.data.pop();
   }
 
+  // 查看栈中的对应index的内容
   peek(index) {
     return this.data[index];
   }
 
+  // 查看栈的长度
   length() {
     return this.data.length;
   }
 
+  // 查看栈顶的内容
   top() {
     return this.data[this.data.length - 1];
   }
 
+  // 栈底的内容
+  bottom() {
+    return this.data[0];
+  }
+
+  // 清空栈
   clear() {
     this.data = [];
   }

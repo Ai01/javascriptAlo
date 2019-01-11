@@ -29,7 +29,7 @@ const dijkstra = (times, startIndex) => {
     const vertexAmount = getVertexAmount(times);
 
     // 填充二维数组
-    const f = [];
+    const f = new Array(vertexAmount);
     times.forEach(i => {
       const { start, end, time } = i || {};
       if (!f[start]) {
