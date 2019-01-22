@@ -20,7 +20,6 @@ var reverseList = function(head) {
 const reverseList2 = (head) => {
   if (!head || !head.next) return head;
   var next = reverseList2(head.next);
-  console.log(next, head);
 
   // 一种对链表如何递归的展示。改变next指向的方法
   head.next.next = head;
