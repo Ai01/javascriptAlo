@@ -14,10 +14,10 @@ const llist = new LinkedList();
 //
 // underline();
 //
-// console.log('insert测试');
-// llist.insert(1);
-// llist.insert(2, 1);
-// console.log(llist);
+console.log('insert测试');
+const newNode = llist.insert(1);
+const nextNode = llist.insert(2, newNode.getId());
+consoleTree(llist);
 //
 // underline();
 //
@@ -25,18 +25,8 @@ const llist = new LinkedList();
 // llist.remove(1);
 // console.log(llist);
 //
-// underline();
-//
-// console.log('find测试');
-// console.log(llist.find(2));
 
-
-llist.insert(-2);
-llist.insert(0);
-llist.insert(-3);
-
-consoleTree(llist);
-
-llist.removeLastNode();
+console.log('find测试');
+console.log(llist.find(nextNode.getId()));
 
 consoleTree(llist);

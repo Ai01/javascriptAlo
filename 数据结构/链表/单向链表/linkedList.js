@@ -1,8 +1,15 @@
 // 链表
 class Node {
   constructor(val, next) {
+    this._id = Math.random()
+      .toString(36)
+      .substr(2);
     this.val = val;
     this.next = next || null;
+  }
+
+  getId() {
+    return this._id;
   }
 }
 
@@ -12,41 +19,45 @@ class LinkedList {
   }
 
   // 查找节点
-  find(item) {
+  find(id) {
     let currentNode = this.startNode;
     while (currentNode) {
       // 如果有节点的val相同。那么就失败了
-      if(currentNode.val === item) return currentNode;
+      if (typeof currentNode.getId === 'function' && currentNode.getId() === id) {
+        return currentNode;
+      }
       currentNode = currentNode.next;
     }
   }
 
   // 插入节点
-  insert(newVal, item) {
+  // 没有上一个节点的标示的时候，插入最后
+  insert(newVal, parentId) {
     const newNode = new Node(newVal);
-    if(item) {
-      const current = this.find(item);
-      if(current) {
+    if (parentId) {
+      const current = this.find(parentId);
+      if (current) {
         newNode.next = current.next;
         current.next = newNode;
       }
     } else {
       const lastNode = this.getLastNode();
-      if(lastNode) {
+      if (lastNode) {
         lastNode.next = newNode;
       } else {
         this.startNode = newNode;
       }
     }
 
+    return newNode;
   }
 
   // 找到val===item的节点之前的节点
-  findPrevNode(item) {
+  findPrevNode(id) {
     let currentNode = this.startNode;
     while (currentNode) {
       // 如果有节点的val相同。那么就失败了
-      if(currentNode.next && currentNode.next.val === item) {
+      if (currentNode.next && typeof currentNode.next.getId === 'function' && currentNode.next.getId() === id) {
         return currentNode;
       }
       currentNode = currentNode.next;
@@ -54,8 +65,8 @@ class LinkedList {
   }
 
   // 删除节点
-  remove(item) {
-    const prevNode = this.findPrevNode(item);
+  remove(id) {
+    const prevNode = this.findPrevNode(id);
     if (prevNode && prevNode.next) {
       prevNode.next = prevNode.next.next;
     }
@@ -74,21 +85,16 @@ class LinkedList {
   removeLastNode() {
     let currentNode = this.startNode;
     let prev = null;
-    while(currentNode && currentNode.next) {
+    while (currentNode && currentNode.next) {
       prev = currentNode;
       currentNode = currentNode.next;
     }
 
-    if(prev) {
+    if (prev) {
       prev.next = null;
     } else {
       this.startNode = null;
     }
-  }
-
-  addTail(val) {
-    const lastNode = this.getLastNode();
-    lastNode.next = new Node(val);
   }
 }
 
