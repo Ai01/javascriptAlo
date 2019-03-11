@@ -41,26 +41,6 @@ class LinkedList {
 
   }
 
-  // 找到val===item的节点之前的节点
-  findPrevNode(item) {
-    let currentNode = this.startNode;
-    while (currentNode) {
-      // 如果有节点的val相同。那么就失败了
-      if(currentNode.next && currentNode.next.val === item) {
-        return currentNode;
-      }
-      currentNode = currentNode.next;
-    }
-  }
-
-  // 删除节点
-  remove(item) {
-    const prevNode = this.findPrevNode(item);
-    if (prevNode && prevNode.next) {
-      prevNode.next = prevNode.next.next;
-    }
-  }
-
   // 获取最后一个节点
   getLastNode() {
     let currentNode = this.startNode;
@@ -70,26 +50,43 @@ class LinkedList {
     return currentNode;
   }
 
-  // 删除最后一个节点
-  removeLastNode() {
-    let currentNode = this.startNode;
-    let prev = null;
-    while(currentNode && currentNode.next) {
-      prev = currentNode;
-      currentNode = currentNode.next;
-    }
-
-    if(prev) {
-      prev.next = null;
-    } else {
-      this.startNode = null;
-    }
-  }
-
-  addTail(val) {
-    const lastNode = this.getLastNode();
-    lastNode.next = new Node(val);
-  }
 }
 
-module.exports = LinkedList;
+
+var addTwoNumbers = function(l1, l2) {
+  let carry = 0;
+  let res = new LinkedList();
+
+  while(l1 || l2) {
+    let tmp = 0;
+
+    let sum = 0;
+    if(l1 && l2) sum = l1.val + l2.val;
+    if(l1 && !l2 ) sum = l1.val;
+    if(l2 && !l1) sum = l2.val;
+
+    sum += carry;
+    if(sum >= 10) {
+      tmp = sum % 10;
+      carry = Math.floor(sum/10);
+    } else {
+      tmp = sum;
+      carry = 0;
+    }
+
+    res.insert(tmp)
+
+    l1 = l1 ? l1.next : null;
+    l2 = l2 ? l2.next : null;
+  }
+
+  if(carry) {
+    res.insert(carry);
+  }
+
+  console.log(res.startNode);
+  return res.startNode;
+};
+
+
+addTwoNumbers({ val: 1 }, { val: 9, next: { val: 9 } });
