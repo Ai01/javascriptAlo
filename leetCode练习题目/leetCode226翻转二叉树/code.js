@@ -1,3 +1,4 @@
+// 迭代实现
 var invertTree = function(root) {
   const dfs = (root, cb) => {
     if (!root) return;
@@ -16,8 +17,24 @@ var invertTree = function(root) {
   return root;
 };
 
-invertTree({
+// 递归实现
+const myInvertTree = (root) => {
+  if(!root) return null;
+  if(root && !root.left && !root.right) return root;
+
+  root._left = myInvertTree(root.right);
+  root._right = myInvertTree(root.left);
+  root.left = root._left;
+  root.right = root._right;
+
+  delete root._right;
+  delete root._left;
+
+  return root;
+}
+
+console.log(myInvertTree({
   val: 4,
   left: { val: 1 },
   right: { val: 2 },
-});
+}));

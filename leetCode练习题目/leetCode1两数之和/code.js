@@ -7,7 +7,7 @@ const twoSum = function(nums, target) {
     const res = target - nums[i];
     // 为了处理可能index是0
     if(typeof _temp[res] === 'number') {
-      return [Math.min(_temp[res], i), Math.max(_temp[res], i)]
+      return [Math.min(_temp[res], i), Math.max(_temp[res], i)];
     } else {
       _temp[nums[i]] = i;
     }

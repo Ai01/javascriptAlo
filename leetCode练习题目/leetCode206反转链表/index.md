@@ -18,7 +18,7 @@
 
 #### 思路
 
-保存当前节点的prev,next。然后将当前节点的next指向prev。循环这个过程
+利用双指针,保存当前节点now,和now前面的prev。然后将当前节点的next指向prev。循环这个过程
 
 #### 复杂度
 
@@ -30,7 +30,7 @@
 
 #### 思路
 
-利用递归的思路。从最后一个节点开始。先将节点的指向next的next。然后断开原本的指向next的链接
+利用递归的思路。从最后一个节点开始。先将节点a的地址赋给a.next的next(a.next.next = a)。然后断开原本的指向next的链接(a.next = null)
 
 参考资料：https://www.jianshu.com/p/34ba48bddae1
 

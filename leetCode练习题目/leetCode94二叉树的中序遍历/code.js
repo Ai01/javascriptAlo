@@ -1,14 +1,20 @@
 const inorderTraversal = function(root) {
   const res = [];
 
-  const mildOrder = (root, cb) => {
-    if (!root) return;
-    if (root.left) mildOrder(root.left, cb);
+  const middleOrder = (root, cb) => {
+    if (!root) {
+      return null;
+    }
+    if (root.left) {
+      middleOrder(root.left, cb);
+    }
     cb(root);
-    if (root.right) mildOrder(root.right, cb);
+    if (root.right) {
+      middleOrder(root.right, cb);
+    }
   };
 
-  mildOrder(root, node => {
+  middleOrder(root, node => {
     res.push(node.val);
   });
 

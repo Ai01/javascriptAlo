@@ -19,7 +19,7 @@ const isUgly = function(num) {
   return false;
 };
 
-isUgly(0);
+// isUgly(0);
 
 const isUgly2 = (num) => {
   if(num === 0) return false;
@@ -32,4 +32,4 @@ const isUgly2 = (num) => {
   return num === 1;
 }
 
-isUgly2(6);
+// isUgly2(6);
