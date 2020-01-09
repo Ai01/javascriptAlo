@@ -5,24 +5,22 @@
 // 而外层循环则像老板一样, 它告诉内层循环你需要不停的工作, 直到工作完成
 const array = [1, 4, 3, 6, 2, 1, 3, 8, 0, 19, 9];
 
-const selectionSort = (arr) => {
-  const len = arr.length;
-  if (len <= 1) {
-    return arr;
-  }
 
-  for (let i = 0; i < len; i++) {
-    let j = i;
-    for (; j < len; j++) {
-      if (arr[j] < arr[i]) {
-        let elen = arr[j];
-        arr[j] = arr[i];
-        arr[i] = elen;
-      }
+function selectionSort(arr) {
+    var len = arr.length;
+    var minIndex, temp;
+    for (var i = 0; i < len - 1; i++) {
+        minIndex = i;
+        for (var j = i + 1; j < len; j++) {
+            if (arr[j] < arr[minIndex]) {     //寻找最小的数
+                minIndex = j;                 //将最小数的索引保存
+            }
+        }
+        temp = arr[i];
+        arr[i] = arr[minIndex];
+        arr[minIndex] = temp;
     }
-  }
-
-  return arr;
+    return arr;
 }
 
 console.log(selectionSort(array));

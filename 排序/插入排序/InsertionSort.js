@@ -9,7 +9,7 @@ const array = [1, 4, 3, 6, 2, 1, 3, 8, 0, 19, 9];
 
 function directInsertionSort(array) {
   var length = array.length;
-  var index;
+  var index
   var current;
   for (var i = 1; i < length; i++) {
     index = i - 1; //待比较元素的下标
@@ -18,41 +18,14 @@ function directInsertionSort(array) {
       //前置条件之一:待比较元素比当前元素大
       array[index + 1] = array[index]; //将待比较元素后移一位
       index--; //游标前移一位
-      // console.log('1', array);
-      // debugger;
     }
     if (index + 1 !== i) {
       //避免同一个元素赋值给自身
       array[index + 1] = current; //将当前元素插入预留空位
-      // console.log('2', array);
-      // debugger
     }
-    // debugger
   }
+  
   return array;
 }
 
 console.log(directInsertionSort(array));
-
-// function directInsertionSort(arr) {
-//   if (arr.length <= 1) {
-//     return arr;
-//   }
-//
-//   var length = arr.length;
-//   var index;
-//   var current;
-//
-//   for (var i = 1; i < length; i++) {
-//     index = i - 1;
-//     current = array[i];
-//     while (index >= 0 && array[index] > current) {
-//       array[index + 1] = array[index];
-//       index--;
-//     }
-//     if (index + 1 !== i) {
-//       array[index + 1] = current;
-//     }
-//     return array;
-//   }
-// }
